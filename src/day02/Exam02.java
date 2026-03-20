@@ -104,6 +104,7 @@ public class Exam02 {
 
 		// 4. if문 사용 (string)
 		
+		
 		if (opstr.equals("+")) {
 			ifResult = n1 + n2;
 		} else if (opstr.equals("-")) {

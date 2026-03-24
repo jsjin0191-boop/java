@@ -1,6 +1,6 @@
 package day06;
 
-import java.util.Arrays;
+//import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -30,61 +30,82 @@ public class Exam01 {
 
 		for (int i = 0; i < com.length; i++) {
 			com[i] = random.nextInt(10);
-			for (int j = i + 1; j < i; j++) {
+			for (int j = 0; j < i; j++) {
 				if (com[i] == com[j]) {
 					i--;
 					break;
 				}
 			}
 		}
-		System.out.println(Arrays.toString(com));
+//		System.out.println(Arrays.toString(com));
+
+		// user 번호를  String 으로 받아서 배열로 split "" => 한글자씩 잘라 배열로 리턴
+		// 숫자로 변환
 		
+//		while(true) {
+//			// user 번호 입력
+//			System.out.println("숫자입력>");
+//			String myNum = scan.next();
+//			
+//			// 한글자씩 나누어 배열로 리턴
+//			String[]myNumstr = myNum.split("");
+//		    for(int i=0; i<myNumstr.length;i++) {
+//		    	user[i]= Integer.parseInt(myNumstr[i]);
+//		    }
+//		}
 		System.out.println("야구게임을 시작합니다.> (0~9사이의 숫자 3개)");
 		while (true) {
 			int strike = 0;
 			int ball = 0;
 			System.out.print("숫자 3개를 눌러주세요 :");
-			for(int i=0; i<user.length; i++) {
-				user[i]= scan.nextInt();
+			for (int i = 0; i < user.length; i++) {
+				user[i] = scan.nextInt();
+			}
+			boolean duplicate = false;
+			a: for (int i = 0; i < user.length; i++) {
+				for (int j = 0; j < i; j++)
+					if (user[i] == user[j]) {
+						duplicate = true;
+						break a;
+					}
+			}
+			if (duplicate) {
+				System.out.println("중복된숫자입니다. 서로다른 숫자를 입력해주세요.");
+				continue;
 			}
 			for (int i = 0; i < user.length; i++) {
 				for (int j = 0; j < com.length; j++) {
 					if (user[i] == com[j]) {
 						if (i == j) {
-							//System.out.println("strike");
+							// System.out.println("strike");
 							strike++;
-						}else {
-							//System.out.println("ball");
+						} else {
+							// System.out.println("ball");
 							ball++;
 						}
 
 					}
 				}
 			}
-			if(strike==0 && ball==0) {
+			if (strike == 0 && ball == 0) {
 				System.out.println("out!!");
-			}else {
-				if(strike!=0) {
-					System.out.print(strike+"s ");
-				}if(ball!=0) {
-					System.out.println(ball+"b ");
+			} else {
+				if (strike != 0) {
+					System.out.println(strike + "s ");
+				}
+				if (ball != 0) {
+					System.out.println(ball + "b ");
 				}
 			}
-			
-			// com 입력 중복 확인!!
-			// user 입력 중복 확인!!(선택)
-			// 3s 일떄 정답 출력 후 종료 만들기
-			
-			
-			
+			if (strike == 3) {
+				System.out.println("정답입니다.");
+				System.out.println("게임을 종료합니다.");
+				break;
+			}
 
 		}
-		
-		
-		
-		
-		
-//	scan.close();
+
+		scan.close();
 
 	}
 

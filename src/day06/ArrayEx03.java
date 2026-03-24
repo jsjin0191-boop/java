@@ -8,24 +8,24 @@ public class ArrayEx03 {
 		// 정수배열[10] 생성 후
 		// 1~10 저장 후 출력
 		
-		int arr[]= new int[5];
-		 for(int i=0; i<arr.length;i++) {
-			 arr[i]=i+1;
-		 }
-		 System.out.println(Arrays.toString(arr));
-		 
-		 for(int i = 0; i<arr.length;i++) {
-		 
-		 // 번지를 랜덤으로 생성 0~9
-		 int index = (int)(Math.random()*arr.length);
+		int arr[] = new int[5];
+		for (int i = 0; i < arr.length; i++) {
+			arr[i] = i + 1;
+		}
+		System.out.println(Arrays.toString(arr));
+
+		for (int i = 0; i < arr.length; i++) {
+
+			// 번지를 랜덤으로 생성 0~9
+			int index = (int) (Math.random() * arr.length);
 //		 System.out.println(index);
-		 
-		 // 교환
+
+			// 교환
 
 			int t = arr[0];
 			arr[0] = arr[index];
 			arr[index] = t;
-		 }		 
+		}
 		System.out.println(Arrays.toString(arr));
 		
 		// 원래대로 정렬(선택정렬)

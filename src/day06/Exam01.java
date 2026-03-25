@@ -37,6 +37,7 @@ public class Exam01 {
 				}
 			}
 		}
+		
 //		System.out.println(Arrays.toString(com));
 
 		// user 번호를  String 으로 받아서 배열로 split "" => 한글자씩 잘라 배열로 리턴

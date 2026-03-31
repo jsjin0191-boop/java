@@ -7,13 +7,12 @@ public class ClassEx01 {
 		
 		TV tv = new TV();
 		tv.power();
-	/* 선호채널 등록
-	 * 5개까지 등록가능
-	 * 1.선호채널 등록 메서드
-	 * - 현재 채널을 선호채널 배열에 넣기
-	 * 2.선호채널 리스트 보기
-	 * - 등록된 선호채널을 리스트로 출력
-	 * */
+		tv.setCh(7);
+		tv.addMark();
+		tv.chUp();
+		tv.chUp();
+		tv.addMark();
+		tv.showMarkList();
 	}
 
 }
@@ -25,6 +24,7 @@ class TV{
 	private int ch;
 	private int vol;
 	private int[] markch = new int[5];
+	private int markCount = 0;
 	// 생성자
 	// 기본생성자
 	public TV() {
@@ -107,12 +107,40 @@ class TV{
 			print();
 		}
 	}
-	public void markch(int[]arr) {
-		for(int i=0; i<arr.length;i++) {
-			
-		}
-		
-	}
+	/* 선호채널 등록
+	 * 5개까지 등록가능
+	 * 1.선호채널 등록 메서드
+	 * - 현재 채널을 선호채널 배열에 넣기
+	 */
+	 public void addMark() {
+        if (!this.power) {
+            System.out.println("전원을 켜주세요.");
+            return;
+        }
+
+        if (markCount < markch.length) {
+            markch[markCount] = this.ch; 	// 현재 채널을 배열에 저장
+            System.out.println(this.ch + "번 채널이 선호채널에 등록되었습니다. (" + (markCount + 1) + "/5)");
+            markCount++;
+        } else {
+            System.out.println("선호채널이 꽉 찼습니다. (최대 5개)");
+        }
+    }
+	 /* 2.선호채널 리스트 보기
+	 * - 등록된 선호채널을 리스트로 출력
+	 * */
+	 public void showMarkList() {
+	        if (markCount == 0) {
+	            System.out.println("등록된 선호채널이 없습니다.");
+	            return;
+	        }
+	        
+	        System.out.print("선호채널 리스트: ");
+	        for (int i = 0; i < markCount; i++) {
+	            System.out.print(markch[i] + "번 ");
+	        }
+	        System.out.println("\n-----------------");
+	    }
 	
 			
 	
